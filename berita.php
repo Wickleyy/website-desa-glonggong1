@@ -99,13 +99,13 @@ include 'templates/header.php';
                 <div class="category-filter">
                     <div class="filter-buttons">
                         <a href="?search=<?php echo urlencode($search); ?>" 
-                           class="filter-btn <?php echo empty($kategori_filter) ? 'active' : ''; ?>">
-                           Semua Kategori
+                            class="filter-btn <?php echo empty($kategori_filter) ? 'active' : ''; ?>">
+                            Semua Kategori
                         </a>
                         <?php foreach ($categories as $cat): ?>
                         <a href="?kategori=<?php echo $cat['kategori']; ?>&search=<?php echo urlencode($search); ?>" 
-                           class="filter-btn <?php echo ($kategori_filter == $cat['kategori']) ? 'active' : ''; ?>">
-                           <?php echo ucfirst($cat['kategori']); ?> (<?php echo $cat['total']; ?>)
+                            class="filter-btn <?php echo ($kategori_filter == $cat['kategori']) ? 'active' : ''; ?>">
+                            <?php echo ucfirst($cat['kategori']); ?> (<?php echo $cat['total']; ?>)
                         </a>
                         <?php endforeach; ?>
                     </div>
@@ -123,7 +123,7 @@ include 'templates/header.php';
                     <article class="news-card">
                         <div class="news-image">
                             <img src="assets/images/news/<?php echo !empty($news['gambar']) ? $news['gambar'] : 'default-news.jpg'; ?>" 
-                                 alt="<?php echo htmlspecialchars($news['judul']); ?>">
+                                alt="<?php echo htmlspecialchars($news['judul']); ?>">
                             <div class="news-category-badge">
                                 <?php echo ucfirst($news['kategori']); ?>
                             </div>
@@ -151,7 +151,7 @@ include 'templates/header.php';
                     <div class="pagination-links">
                         <?php if ($page > 1): ?>
                             <a href="?page=<?php echo ($page - 1); ?>&kategori=<?php echo urlencode($kategori_filter); ?>&search=<?php echo urlencode($search); ?>" 
-                               class="pagination-btn">← Sebelumnya</a>
+                                class="pagination-btn">← Sebelumnya</a>
                         <?php endif; ?>
 
                         <?php
@@ -202,5 +202,344 @@ include 'templates/header.php';
             </div>
         </div>
     </section>
+
+    <style>
+        /* BERITA PAGE STYLES*/
+
+/* Search and Filter Section */
+.search-filter {
+    padding: 3rem 0;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.filter-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.search-form {
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.search-input-group {
+    display: flex;
+    width: 100%;
+}
+
+.search-input-group input[type="text"] {
+    flex-grow: 1;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #ddd;
+    border-radius: 50px 0 0 50px;
+    font-size: 1rem;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+}
+
+.search-input-group input[type="text"]:focus {
+    box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.2);
+    border-color: #1e3c72;
+}
+
+.search-input-group button {
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #1e3c72;
+    background: #1e3c72;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 50px 50px 0;
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: background-color 0.3s ease;
+}
+
+.search-input-group button:hover {
+    background: #2a5298;
+}
+
+/* Category filter buttons use existing styles from the reference CSS */
+/* .category-filter, .filter-buttons, .filter-btn are already styled */
+
+
+/* News List Section */
+.news-list {
+    padding: 5rem 0;
+    background: white;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+.news-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+.news-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.news-card:hover .news-image img {
+    transform: scale(1.08);
+}
+
+.news-category-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(255, 215, 0, 0.9); /* #FFD700 */
+    color: #1e3c72;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+}
+
+.news-content {
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.news-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.news-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.news-content h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1e3c72;
+    margin-bottom: 0.75rem;
+}
+
+.news-content h3 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.news-content h3 a:hover {
+    color: #FFD700;
+}
+
+.news-excerpt {
+    color: #555;
+    line-height: 1.7;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.read-more {
+    color: #1e3c72;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    align-self: flex-start;
+}
+
+.read-more:hover {
+    color: #FFA500;
+}
+
+
+/* Pagination */
+.pagination {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.pagination-info {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.pagination-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pagination-btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    color: #333;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.pagination-btn:hover {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+}
+
+.pagination-btn.active {
+    background-color: #1e3c72;
+    color: white;
+    border-color: #1e3c72;
+    cursor: default;
+}
+
+
+/* No Results Found */
+.no-results {
+    text-align: center;
+    padding: 5rem 2rem;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+}
+.no-results-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.no-results-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+    color: #FFD700;
+}
+.no-results h3 {
+    font-size: 2rem;
+    color: #1e3c72;
+    margin-bottom: 1rem;
+}
+.no-results p {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+/* .btn-primary is already styled in the reference */
+
+
+/* Newsletter Signup Section */
+.newsletter {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.newsletter-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.newsletter-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.newsletter-content p {
+    opacity: 0.9;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+}
+
+.newsletter-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-input-group {
+    display: flex;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.newsletter-input-group input[type="email"] {
+    flex-grow: 1;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    outline: none;
+}
+
+.newsletter-input-group button {
+    border: none;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #1e3c72;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.newsletter-input-group button:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-form {
+        max-width: 100%;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pagination {
+        flex-direction: column;
+    }
+}
+    </style>
 
 <?php include 'templates/footer.php'; ?>

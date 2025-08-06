@@ -67,6 +67,9 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-link {
@@ -74,16 +77,16 @@ body {
     text-decoration: none;
     font-weight: 500;
     padding: 0.5rem 1rem;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    position: relative;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap; /* Biar teks tidak membungkus ke bawah */
+    display: inline-block;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    background: rgba(255, 215, 0, 0.2);
+    background-color: rgba(255, 215, 0, 0.2);
     color: #FFD700;
-    transform: translateY(-2px);
 }
 
 .hamburger {
@@ -447,125 +450,6 @@ body {
     left: 0;
 }
 
-/* Programs Timeline */
-.programs {
-    padding: 5rem 0;
-    background: #f8f9fa;
-}
-
-.timeline {
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: #1e3c72;
-    transform: translateX(-50%);
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 4rem;
-}
-
-.timeline-item:nth-child(odd) .timeline-content {
-    margin-right: 55%;
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-    margin-left: 55%;
-}
-
-.timeline-date {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    background: #FFD700;
-    color: #1e3c72;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    font-weight: 600;
-    z-index: 2;
-    white-space: nowrap;
-}
-
-.timeline-content {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    position: relative;
-}
-
-.program-card {
-    padding: 2.5rem;
-}
-
-.program-card h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #1e3c72;
-    margin-bottom: 1.5rem;
-}
-
-.program-description {
-    color: #666;
-    line-height: 1.8;
-    margin-bottom: 2rem;
-}
-
-.program-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.program-gallery img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-}
-
-.program-gallery img:hover {
-    transform: scale(1.05);
-}
-
-.program-impact h4 {
-    color: #1e3c72;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.program-impact ul {
-    list-style: none;
-    padding: 0;
-}
-
-.program-impact li {
-    color: #666;
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.program-impact li::before {
-    content: "→";
-    color: #FFD700;
-    font-weight: bold;
-    position: absolute;
-    left: 0;
-}
-
 /* Partnership Section */
 .partnership {
     padding: 5rem 0;
@@ -825,60 +709,6 @@ body {
     line-height: 1.6;
 }
 
-/* Gallery Styles */
-.gallery {
-    padding: 5rem 0;
-    background: #f8f9fa;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-}
-
-.gallery-item {
-    position: relative;
-    height: 250px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover {
-    transform: scale(1.02);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.gallery-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    color: white;
-    padding: 2rem 1.5rem 1.5rem;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover .gallery-overlay {
-    transform: translateY(0);
-}
-
-.gallery-overlay p {
-    font-weight: 500;
-    margin: 0;
-}
-
 /* Contact Styles */
 .contact {
     padding: 5rem 0;
@@ -1083,7 +913,7 @@ body {
         background: #1e3c72;
         width: 100%;
         text-align: center;
-        transition: 0.3s;
+        transition: 0.3s ease-in-out;
         box-shadow: 0 10px 27px rgba(0,0,0,0.05);
         padding: 2rem 0;
     }
@@ -1199,4 +1029,126 @@ body {
     .timeline-item:nth-child(even) .timeline-content {
         margin-left: 40px;
     }
+}
+
+/* =================================================================
+   HALAMAN BERANDA - BAGIAN BERITA TERBARU
+   ================================================================= */
+
+/* Pembungkus utama untuk seluruh bagian "Berita Terbaru" */
+.latest-news {
+    padding: 5rem 0;
+    background-color: #f8f9fa; /* Memberi sedikit warna latar belakang */
+}
+
+/* Wadah yang akan menampung kartu-kartu berita dalam format grid */
+.news-grid {
+    display: grid;
+    /* Membuat grid yang responsif: 3 kolom di layar besar, 2 di layar medium,
+       dan 1 di layar kecil secara otomatis. */
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2.5rem; /* Jarak antar kartu berita */
+    margin-bottom: 3rem; /* Jarak sebelum tombol "Lihat Semua Berita" */
+}
+
+/* Desain untuk setiap kartu berita */
+.news-card {
+    background: #fff;
+    border-radius: 15px; /* Sudut yang membulat */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Efek bayangan halus */
+    overflow: hidden; /* Penting agar gambar tetap di dalam sudut yang membulat */
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Efek saat kursor mouse diarahkan ke kartu */
+.news-card:hover {
+    transform: translateY(-8px); /* Sedikit terangkat ke atas */
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12); /* Bayangan lebih jelas */
+}
+
+/* Wadah untuk gambar berita, memperbaiki masalah gambar kebesaran */
+.news-image {
+    height: 200px; /* Menetapkan tinggi yang sama untuk semua gambar */
+    overflow: hidden;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Membuat gambar mengisi area tanpa terdistorsi */
+    transition: transform 0.4s ease;
+}
+
+.news-card:hover .news-image img {
+    transform: scale(1.08); /* Efek zoom saat disentuh kursor */
+}
+
+/* Area untuk konten teks di bawah gambar */
+.news-content {
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Memastikan semua kartu memiliki tinggi yang sama */
+}
+
+/* Info meta seperti kategori dan tanggal */
+.news-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.news-category {
+    background-color: #1e3c72;
+    color: #FFD700;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-weight: 500;
+}
+
+/* Judul berita */
+.news-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.news-content h3 a {
+    color: #1e3c72;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.news-content h3 a:hover {
+    color: #FFD700;
+}
+
+/* Cuplikan (excerpt) berita */
+.news-content p {
+    color: #555;
+    line-height: 1.6;
+    flex-grow: 1; /* Mendorong link "Baca Selengkapnya" ke bawah */
+    margin-bottom: 1.5rem;
+}
+
+/* Link "Baca Selengkapnya" */
+.read-more {
+    color: #1e3c72;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    align-self: flex-start;
+}
+
+.read-more:hover {
+    color: #FFA500;
+}
+
+/* Kelas bantu untuk menengahkan tombol */
+.text-center {
+    text-align: center;
 }

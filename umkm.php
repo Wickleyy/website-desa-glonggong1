@@ -92,21 +92,21 @@ include 'templates/header.php';
                 <div class="category-filter">
                     <div class="filter-buttons">
                         <a href="?search=<?php echo urlencode($search); ?>" 
-                           class="filter-btn <?php echo ($kategori_filter == 'all') ? 'active' : ''; ?>">
-                           Semua Kategori (<?php echo count($umkm_list); ?>)
+                            class="filter-btn <?php echo ($kategori_filter == 'all') ? 'active' : ''; ?>">
+                            Semua Kategori (<?php echo count($umkm_list); ?>)
                         </a>
                         <?php foreach ($categories as $cat): ?>
                         <a href="?kategori=<?php echo $cat['kategori']; ?>&search=<?php echo urlencode($search); ?>" 
-                           class="filter-btn <?php echo ($kategori_filter == $cat['kategori']) ? 'active' : ''; ?>">
-                           <?php 
-                           $icons = [
-                               'kuliner' => '🍽️',
-                               'kerajinan' => '🎨', 
-                               'hiburan' => '🎮',
-                               'jasa' => '🛠️'
-                           ];
-                           echo ($icons[$cat['kategori']] ?? '📦') . ' ' . ucfirst($cat['kategori']) . ' (' . $cat['total'] . ')';
-                           ?>
+                            class="filter-btn <?php echo ($kategori_filter == $cat['kategori']) ? 'active' : ''; ?>">
+                            <?php 
+                            $icons = [
+                                'kuliner' => '🍽️',
+                                'kerajinan' => '🎨', 
+                                'hiburan' => '🎮',
+                                'jasa' => '🛠️'
+                            ];
+                            echo ($icons[$cat['kategori']] ?? '📦') . ' ' . ucfirst($cat['kategori']) . ' (' . $cat['total'] . ')';
+                            ?>
                         </a>
                         <?php endforeach; ?>
                     </div>
@@ -142,7 +142,7 @@ include 'templates/header.php';
                         <div class="umkm-card">
                             <div class="umkm-image">
                                 <img src="assets/images/umkm/<?php echo !empty($umkm['gambar']) ? $umkm['gambar'] : 'default-umkm.jpg'; ?>" 
-                                     alt="<?php echo htmlspecialchars($umkm['nama_usaha']); ?>">
+                                    alt="<?php echo htmlspecialchars($umkm['nama_usaha']); ?>">
                             </div>
                             <div class="umkm-content">
                                 <div class="umkm-category"><?php echo ucfirst($umkm['kategori']); ?></div>
@@ -159,7 +159,7 @@ include 'templates/header.php';
                                 <div class="umkm-actions">
                                     <?php if (!empty($umkm['kontak'])): ?>
                                     <a href="https://wa.me/62<?php echo ltrim($umkm['kontak'], '0'); ?>" 
-                                       target="_blank" class="btn-contact">📱 WhatsApp</a>
+                                        target="_blank" class="btn-contact">📱 WhatsApp</a>
                                     <?php endif; ?>
                                     <?php if (!empty($umkm['email'])): ?>
                                     <a href="mailto:<?php echo $umkm['email']; ?>" class="btn-email">📧 Email</a>
@@ -225,5 +225,114 @@ include 'templates/header.php';
             </div>
         </div>
     </section>
+
+
+    <style>
+        /* =================================================================
+   UMKM PAGE - SEARCH AND FILTER SECTION
+   ================================================================= */
+
+/* This section can re-use the existing .search-filter styles
+   if they are already in your main stylesheet. If not, here they are. */
+
+.search-filter {
+    padding: 3rem 0;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.filter-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+/* --- Search Form --- */
+.search-form {
+    flex-grow: 1;
+    max-width: 450px;
+}
+
+.search-input-group {
+    display: flex;
+    width: 100%;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    border-radius: 50px;
+}
+
+.search-input-group input[type="text"] {
+    flex-grow: 1;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 50px 0 0 50px;
+    font-size: 1rem;
+    color: #333;
+    outline: none;
+    border-right: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-input-group input[type="text"]:focus {
+    border-color: #1e3c72;
+    box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
+}
+
+.search-input-group button {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid #1e3c72;
+    background: #1e3c72;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 50px 50px 0;
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: background-color 0.3s ease;
+}
+
+.search-input-group button:hover {
+    background: #2a5298;
+}
+
+/* --- Category Filter Buttons --- */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    display: flex; /* Use flex to align icon and text */
+    align-items: center;
+    gap: 0.5rem; /* Space between icon and text */
+    background: white;
+    border: 2px solid #ddd;
+    color: #333;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    text-decoration: none;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.filter-btn:hover {
+    border-color: #1e3c72;
+    color: #1e3c72;
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: #1e3c72;
+    color: white;
+    border-color: #1e3c72;
+    box-shadow: 0 5px 15px rgba(30, 60, 114, 0.3);
+    transform: translateY(-2px);
+}
+    </style>
 
 <?php include 'templates/footer.php'; ?>

@@ -315,7 +315,6 @@ include 'templates/header.php';
                 <p>Mari bersama-sama membangun masa depan yang lebih baik untuk generasi mendatang.</p>
                 <div class="cta-buttons">
                     <a href="kontak.php" class="btn-primary">Hubungi Kami</a>
-                    <a href="program.php" class="btn-secondary">Lihat Program</a>
                 </div>
             </div>
         </div>

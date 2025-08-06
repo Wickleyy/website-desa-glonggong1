@@ -576,6 +576,121 @@ try {
             font-size: 1.5rem;
         }
     }
+
+    /* =================================================================
+   HOMEPAGE - LATEST NEWS SECTION
+   ================================================================= */
+
+/* This is the main wrapper for the "Berita Terbaru" section */
+.latest-news {
+    padding: 5rem 0;
+    background-color: #f8f9fa;
+}
+
+/* This is the grid container that will hold the cards */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2.5rem; /* The space between the news cards */
+    margin-bottom: 3rem;
+}
+
+/* This styles each individual news item as a "card" */
+.news-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* This controls the image container, fixing the oversized image issue */
+.news-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.news-card:hover .news-image img {
+    transform: scale(1.08);
+}
+
+/* This styles the text content area below the image */
+.news-content {
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.news-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.news-category {
+    background-color: #1e3c72;
+    color: #FFD700;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-weight: 500;
+}
+
+.news-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.news-content h3 a {
+    color: #1e3c72;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.news-content h3 a:hover {
+    color: #FFD700;
+}
+
+.news-content p {
+    color: #555;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.read-more {
+    color: #1e3c72;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    align-self: flex-start;
+}
+
+.read-more:hover {
+    color: #FFA500;
+}
+
+/* Helper class to center the button below the grid */
+.text-center {
+    text-align: center;
+}
     </style>
 
     <script>

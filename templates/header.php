@@ -37,8 +37,9 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
             <ul class="nav-menu">
                 <li><a href="index.php" class="nav-link <?php echo ($current_page == 'index') ? 'active' : ''; ?>">Beranda</a></li>
                 <li><a href="tentang.php" class="nav-link <?php echo ($current_page == 'tentang') ? 'active' : ''; ?>">Tentang Glonggong</a></li>
-                <li><a href="umkm.php" class="nav-link <?php echo ($current_page == 'umkm') ? 'active' : ''; ?>">Potensi UMKM</a></li>
+                <li><a href="umkm.php" class="nav-link <?php echo ($current_page == 'umkm') ? 'active' : ''; ?>">UMKM</a></li>
                 <li><a href="berita.php" class="nav-link <?php echo ($current_page == 'berita') ? 'active' : ''; ?>">Berita</a></li>
+                <li><a href="sarana.php" class="nav-link <?php echo ($current_page == 'Sarana dan Prasarana') ? 'active' : ''; ?>">Sarana & Pra</a></li>
                 <li><a href="kontak.php" class="nav-link <?php echo ($current_page == 'kontak') ? 'active' : ''; ?>">Kontak</a></li>
             </ul>
             <div class="hamburger">

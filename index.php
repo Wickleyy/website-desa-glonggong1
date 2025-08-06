@@ -44,10 +44,10 @@ include 'templates/header.php';
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title">Selamat Datang di RW 7 Temas</h1>
+                <h1 class="hero-title">Selamat Datang di desa Glonggong</h1>
                 <p class="hero-subtitle">Komunitas Bersih, Berbudaya, dan Berdaya</p>
                 <p class="hero-description">
-                    RW 7 adalah komunitas unggul dalam kebersihan dan gotong royong, 
+                    Desa Glonggong adalah komunitas unggul dalam kebersihan dan gotong royong, 
                     yang terus berkembang menuju kemandirian pangan dan kemajuan 
                     dengan tetap melestarikan nilai-nilai budaya lokal.
                 </p>
@@ -80,9 +80,9 @@ include 'templates/header.php';
                         <img src="assets/images/program-featured.jpg" alt="Program Kami">
                     </div>
                     <div class="card-content">
-                        <h3>Program Kami</h3>
-                        <p>Dokumentasi kegiatan dan program pemberdayaan masyarakat yang telah dan sedang berjalan.</p>
-                        <a href="program.php" class="card-link">Lihat Program →</a>
+                        <h3>Sarana & Prasarana</h3>
+                        <p>Sarana & Prasarana yang tersedia di desa glonggong ini.</p>
+                        <a href="sarana.php" class="card-link">Lihat Sarana & Prasarana →</a>
                     </div>
                 </div>
                 
@@ -190,4 +190,127 @@ include 'templates/header.php';
         </div>
     </section>
 
+    <script>
+/* =================================================================
+   HALAMAN BERANDA - BAGIAN BERITA TERBARU
+   ================================================================= */
+
+/* Pembungkus utama untuk seluruh bagian "Berita Terbaru" */
+.latest-news {
+    padding: 5rem 0;
+    background-color: #f8f9fa; /* Memberi sedikit warna latar belakang */
+}
+
+/* Wadah yang akan menampung kartu-kartu berita dalam format grid */
+.news-grid {
+    display: grid;
+    /* Membuat grid yang responsif: 3 kolom di layar besar, 2 di layar medium,
+       dan 1 di layar kecil secara otomatis. */
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2.5rem; /* Jarak antar kartu berita */
+    margin-bottom: 3rem; /* Jarak sebelum tombol "Lihat Semua Berita" */
+}
+
+/* Desain untuk setiap kartu berita */
+.news-card {
+    background: #fff;
+    border-radius: 15px; /* Sudut yang membulat */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Efek bayangan halus */
+    overflow: hidden; /* Penting agar gambar tetap di dalam sudut yang membulat */
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Efek saat kursor mouse diarahkan ke kartu */
+.news-card:hover {
+    transform: translateY(-8px); /* Sedikit terangkat ke atas */
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12); /* Bayangan lebih jelas */
+}
+
+/* Wadah untuk gambar berita, memperbaiki masalah gambar kebesaran */
+.news-image {
+    height: 200px; /* Menetapkan tinggi yang sama untuk semua gambar */
+    overflow: hidden;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Membuat gambar mengisi area tanpa terdistorsi */
+    transition: transform 0.4s ease;
+}
+
+.news-card:hover .news-image img {
+    transform: scale(1.08); /* Efek zoom saat disentuh kursor */
+}
+
+/* Area untuk konten teks di bawah gambar */
+.news-content {
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Memastikan semua kartu memiliki tinggi yang sama */
+}
+
+/* Info meta seperti kategori dan tanggal */
+.news-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.news-category {
+    background-color: #1e3c72;
+    color: #FFD700;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-weight: 500;
+}
+
+/* Judul berita */
+.news-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.news-content h3 a {
+    color: #1e3c72;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.news-content h3 a:hover {
+    color: #FFD700;
+}
+
+/* Cuplikan (excerpt) berita */
+.news-content p {
+    color: #555;
+    line-height: 1.6;
+    flex-grow: 1; /* Mendorong link "Baca Selengkapnya" ke bawah */
+    margin-bottom: 1.5rem;
+}
+
+/* Link "Baca Selengkapnya" */
+.read-more {
+    color: #1e3c72;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    align-self: flex-start;
+}
+
+.read-more:hover {
+    color: #FFA500;
+}
+
+/* Kelas bantu untuk menengahkan tombol */
+.text-center {
+    text-align: center;
+}
+    </script>
 <?php include 'templates/footer.php'; ?>
